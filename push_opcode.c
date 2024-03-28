@@ -7,18 +7,19 @@
  */
 void opcode_push(stack_t **stack, unsigned int line_num)
 {
-	if (!header.arg || !is_integer(header.arg))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
-		handle_error(EXIT_FAILURE);
-	}
-
 	int value = atoi(header.arg);
 
-	if (add_nodeint(stack, value) == NULL)
+	if (!header.arg || !validate_integer(header.arg))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		handle_error(stack, EXIT_FAILURE);
+	}
+
+
+	if (new_int_node(stack, value) == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		handle_error(EXIT_FAILURE);
+		handle_error(stack, EXIT_FAILURE);
 	}
 }
 
@@ -49,11 +50,12 @@ int validate_integer(char *str_val)
 /**
  * handle_error - Centralizes error handling.
  * @exit_code: Exit code for the program.
+ * @stack: first arg
  */
-void handle_error(int exit_code)
+void handle_error(stack_t **stack, int exit_code)
 {
-	free_list(*stack);
-	fclose(glob.file);
-	free(glob.line);
+	free_stack(*stack);
+	fclose(header.file);
+	free(header.line);
 	exit(exit_code);
 }

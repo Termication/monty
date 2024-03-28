@@ -5,6 +5,10 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <ctype.h>
+
 
 /**
  * struct the_head - houses ptr variables
@@ -20,6 +24,7 @@ typedef struct the_head
 } head;
 
 extern head header;
+extern head head_nodes;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -51,6 +56,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+void add_opcode(stack_t **stack, unsigned int encounter);
+void swap_opcode(stack_t **stack, unsigned int encounter);
+void nop_opcode(stack_t **stack, unsigned int encounter);
+void free_stack(stack_t *stack);
+void the_pop_op(stack_t **stack, unsigned int encounter);
+void pint_char(stack_t **stack, unsigned int encounter);
+void pint_string(stack_t **stack, unsigned int encounter);
+void pint_int(stack_t **stack, unsigned int encounter);
+void handle_error(stack_t **stack, int exit_code);
+int validate_integer(char *str_val);
+void opcode_push(stack_t **stack, unsigned int line_num);
+void print_stack(stack_t **stack, unsigned int encounter);
+void executable(char *arg, stack_t **stack, unsigned int encounter);
+void line_reader(stack_t **stack);
+stack_t *new_int_node(stack_t **stack, const int value);
 
 #endif /* monty.h */

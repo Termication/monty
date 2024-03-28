@@ -34,7 +34,7 @@ void pint_int(stack_t **stack, unsigned int encounter)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", encounter);
 		free(header.line);
-		free_list(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
