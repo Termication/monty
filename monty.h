@@ -24,7 +24,6 @@ typedef struct the_head
 } head;
 
 extern head header;
-extern head head_nodes;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

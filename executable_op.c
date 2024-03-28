@@ -34,7 +34,7 @@ void executable(char *arg, stack_t **stack, unsigned int encounter)
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", encounter, arg);
 	free_stack(*stack);
-	fclose(head_nodes.file);
-	free(head_nodes.line);
+	fclose(header.file);
+	free(header.line);
 	exit(EXIT_FAILURE);
 }

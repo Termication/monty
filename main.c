@@ -1,4 +1,5 @@
 #include "monty.h"
+head header;
 /**
  * main - monty main function
  * @argc: 1stargument
@@ -16,16 +17,16 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	head_nodes.file = fopen(argv[1], "r");
-	if (head_nodes.file == NULL)
+	header.file = fopen(argv[1], "r");
+	if (header.file == NULL)
 	{
 		fprintf(stderr, "ERORR opening file failed %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
 	line_reader(&stack);
-	fclose(head_nodes.file);
-	free(head_nodes.line);
+	fclose(header.file);
+	free(header.line);
 	free_stack(stack);
 	exit(EXIT_SUCCESS);
 }
