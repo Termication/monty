@@ -30,6 +30,6 @@ void line_reader(stack_t **stack)
 		{
 			continue;
 			}
-		executable(opcode, stack, line_num);
+		/* executable(opcode, stack, line_num); */
 	}
 }

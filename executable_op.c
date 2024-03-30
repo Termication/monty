@@ -21,20 +21,28 @@ void executable(char *arg, stack_t **stack, unsigned int encounter)
 		{"nop", nop_opcode},
 		{NULL, NULL}
 	};
-	int index;
+	
 
-	for (index = 0; instructions[index].opcode != NULL; index++)
+	unsigned int i = 0;
+	char *op;
+
+	op = strtok(content, " \n\t");
+	if (op && op[0] == '#')
+		return (0);
+	bus.arg = strtok(NULL, " \n\t");
+	while (instructions[i].opcode && op)
 	{
-		if (strcmp(arg, instructions[index].opcode) == 0)
-		{
-			instructions[index].f(stack, encounter);
-			return;
+		if (strcmp(op, opst[i].opcode) == 0)
+		{	instructions[i].f(stack, counter);
+			return (0);
 		}
+		i++;
 	}
-
-	fprintf(stderr, "L%d: unknown instruction %s\n", encounter, arg);
-	free_stack(*stack);
-	fclose(header.file);
-	free(header.line);
-	exit(EXIT_FAILURE);
+	if (op && instructions[i].opcode == NULL)
+	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+		fclose(file);
+		free(content);
+		free_stack(*stack);
+		exit(EXIT_FAILURE); }
+	return (1);
 }
