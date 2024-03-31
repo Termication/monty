@@ -1,5 +1,5 @@
 #include "monty.h"
-head header = {NULL, NULL, NULL, 0};
+head header;
 /**
  * main - monty main function
  * @argc: 1stargument
