@@ -10,7 +10,7 @@
  * and if found, calls the corresponding function pointer with the given
  * stack and encounter parameters.
  */
-void executable(char *arg, stack_t **stack, unsigned int encounter)
+int executable (char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 	instruction_t instructions[] = {
 		{"push", opcode_push},
@@ -29,10 +29,10 @@ void executable(char *arg, stack_t **stack, unsigned int encounter)
 	op = strtok(content, " \n\t");
 	if (op && op[0] == '#')
 		return (0);
-	bus.arg = strtok(NULL, " \n\t");
+	header.arg = strtok(NULL, " \n\t");
 	while (instructions[i].opcode && op)
 	{
-		if (strcmp(op, opst[i].opcode) == 0)
+		if (strcmp(op, instructions[i].opcode) == 0)
 		{	instructions[i].f(stack, counter);
 			return (0);
 		}

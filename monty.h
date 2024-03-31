@@ -21,6 +21,7 @@ typedef struct the_head
 	char *arg;
 	FILE *file;
 	char *line;
+	int help;
 } head;
 
 extern head header;
@@ -67,7 +68,7 @@ void handle_error(stack_t **stack, int exit_code);
 int validate_integer(char *str_val);
 void opcode_push(stack_t **stack, unsigned int line_num);
 void print_stack(stack_t **stack, unsigned int encounter);
-void executable(char *arg, stack_t **stack, unsigned int encounter);
+int executable(char *content, stack_t **stack, unsigned int counter, FILE *file);
 void line_reader(stack_t **stack);
 stack_t *new_int_node(stack_t **stack, const int value);
 
