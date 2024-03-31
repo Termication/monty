@@ -10,14 +10,14 @@ void pint_char(stack_t **stack, unsigned int encounter)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: ERROR,THE STACK IS EMPTY\n", encounter);
+		fprintf(stderr, "L%d: can't print, stack empty\n", encounter);
 		exit(EXIT_FAILURE);
 	}
 
 	ch = (*stack)->n;
 	if (ch < 0 || ch > 127)
 	{
-		fprintf(stderr, "L%d: ERROR, OUT OF RANGE\n", encounter);
+		fprintf(stderr, "L%d: can't print, out of range\n", encounter);
 		exit(EXIT_FAILURE);
 	}
 
