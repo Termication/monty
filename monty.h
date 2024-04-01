@@ -71,5 +71,14 @@ void print_stack(stack_t **stack, unsigned int encounter);
 int executable(char *content, stack_t **stack, unsigned int counter, FILE *file);
 void line_reader(stack_t **stack);
 stack_t *new_int_node(stack_t **stack, const int value);
+void _stack(stack_t **stack, unsigned int encounter);
+void multiply(stack_t **stack, unsigned int encounter);
+void modulus(stack_t **stack, unsigned int encounter);
+void divide(stack_t **stack, unsigned int encounter);
+void substitute(stack_t **stack, unsigned int encounter);
+void rotate(stack_t **stack, __attribute__((unused)) unsigned int encounter);
+void rotate_num2(stack_t **stack,
+                __attribute__((unused)) unsigned int encounter);
+void _queue(stack_t **stack, unsigned int encounter);
 
 #endif /* monty.h */

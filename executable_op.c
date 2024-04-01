@@ -19,6 +19,17 @@ int executable (char *content, stack_t **stack, unsigned int counter, FILE *file
 		{"pop", the_pop_op},
 		{"swap", swap_opcode},
 		{"nop", nop_opcode},
+		{"sub", substitute},
+		{"add", add_opcode},
+		{"mul", multiply},
+		{"div", divide},
+		{"mod", modulus},
+		{"pstr", pint_string},
+		{"pchar", pint_char},
+		{"rotl", rotate},
+		{"rotr", rotate_num2},
+		{"queue", _queue},
+		{"stack", _stack},
 		{NULL, NULL}
 	};
 	

@@ -29,7 +29,7 @@ void divide(stack_t **stack, unsigned int encounter)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", encounter);
 		fclose(header.file);
-		free(header.content);
+		free(header.line);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -38,7 +38,7 @@ void divide(stack_t **stack, unsigned int encounter)
 	{
 		fprintf(stderr, "L%d: division by zero\n", encounter);
 		fclose(header.file);
-		free(header.content);
+		free(header.line);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

@@ -22,8 +22,8 @@ void substitute(stack_t **stack, unsigned int encounter)
 	}
 
 	tmp = *stack;
-	result = tmp->next->h - tmp->h;
-	tmp->next->h = result;
+	result = tmp->next->n - tmp->n;
+	tmp->next->n = result;
 	*stack = tmp->next;
 	free(tmp);
 }
