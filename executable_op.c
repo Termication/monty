@@ -1,28 +1,26 @@
 #include "monty.h"
 /**
  * executable - executes an opcode
- * @arg: opcode to execute
+ * @content: opcode to execute
  * @stack: pointer to the top of the stack
- * @encounter: line number where the operation is encountered
+ * @counter: line number where the operation is encountered
+ * @file: file ptr
  *
  * Description: This function executes the specified opcode. It searches
  * through an array of instruction structures to find a matching opcode,
  * and if found, calls the corresponding function pointer with the given
  * stack and encounter parameters.
+ * Return: 0 on success
  */
-int executable (char *content, stack_t **stack, unsigned int counter, FILE *file)
+int executable(char *content, stack_t **stack,
+		unsigned int counter, FILE *file)
 {
 	instruction_t instructions[] = {
-		{"push", opcode_push},
-		{"pall", print_stack},
-		{"pint", pint_int},
-		{"pop", the_pop_op},
-		{"swap", swap_opcode},
-		{"nop", nop_opcode},
-		{"sub", substitute},
-		{"add", add_opcode},
-		{"mul", multiply},
-		{"div", divide},
+		{"push", opcode_push}, {"pall", print_stack},
+		{"pint", pint_int}, {"pop", the_pop_op},
+		{"swap", swap_opcode}, {"nop", nop_opcode},
+		{"sub", substitute}, {"add", add_opcode},
+		{"mul", multiply}, {"div", divide},
 		{"mod", modulus},
 		{"pstr", pint_string},
 		{"pchar", pint_char},
@@ -32,8 +30,6 @@ int executable (char *content, stack_t **stack, unsigned int counter, FILE *file
 		{"stack", _stack},
 		{NULL, NULL}
 	};
-	
-
 	unsigned int i = 0;
 	char *op;
 

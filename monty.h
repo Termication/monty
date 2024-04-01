@@ -15,6 +15,8 @@
  * @arg: char ptr
  * @file: file ptr
  * @line: char ptr 2
+ * @help: int var:wq
+ *
  */
 typedef struct the_head
 {
@@ -68,7 +70,8 @@ void handle_error(stack_t **stack, int exit_code);
 int validate_integer(char *str_val);
 void opcode_push(stack_t **stack, unsigned int line_num);
 void print_stack(stack_t **stack, unsigned int encounter);
-int executable(char *content, stack_t **stack, unsigned int counter, FILE *file);
+int executable(char *content,
+		stack_t **stack, unsigned int counter, FILE *file);
 void line_reader(stack_t **stack);
 stack_t *new_int_node(stack_t **stack, const int value);
 void _stack(stack_t **stack, unsigned int encounter);
@@ -78,7 +81,7 @@ void divide(stack_t **stack, unsigned int encounter);
 void substitute(stack_t **stack, unsigned int encounter);
 void rotate(stack_t **stack, __attribute__((unused)) unsigned int encounter);
 void rotate_num2(stack_t **stack,
-                __attribute__((unused)) unsigned int encounter);
+		__attribute__((unused)) unsigned int encounter);
 void _queue(stack_t **stack, unsigned int encounter);
 
 #endif /* monty.h */
